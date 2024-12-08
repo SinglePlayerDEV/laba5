@@ -1,0 +1,82 @@
+#include<iostream>
+
+using namespace std;
+
+int perestanovka(int** arrr, int masiv[], int str, int stl)
+{
+	int p;
+	cout << "enter row: ";
+	cin >> p;
+	int** arr2 = new int* [str + 1];
+	for (int i = 0; i < str + 1; i++)
+	{
+		arr2[i] = new int[stl];
+	}
+	for (int i = 0; i < p; i++)
+	{
+		for (int j = 0; j < stl; j++)
+		{
+			arr2[i][j] = arrr[i][j];
+		}
+	}
+	for (int i = 0; i < stl; i++)
+	{
+		arr2[p][i] = masiv[i];
+	}
+	for (int i = p; i < str; i++)
+	{
+		for (int j = 0; j < stl; j++)
+		{
+			arr2[i + 1][j] = arrr[i][j];
+		}
+	}
+	for (int i = 0; i < str + 1; i++)
+	{
+		for (int j = 0; j < stl; j++)
+		{
+			cout << arr2[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	return 0;
+}
+int main()
+{
+	system("chcp 1251");
+	int str;
+	int stl;
+	cout << "enter row: ";
+	cin >> str;
+	cout << "enter stl: ";
+	cin >> stl;
+	int** arr = new int* [str];
+	for (int i = 0; i < str; i++)
+	{
+		arr[i] = new int[stl];
+	}
+	cout << "enter matrix " << str << " size " << stl << endl;
+	for (int i = 0; i < str; i++)
+	{
+		for (int j = 0; j < stl; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+	for (int i = 0; i < str; i++)
+	{
+		for (int j = 0; j < stl; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	cout << "create mssive dinanic: " << stl << endl;
+	cout << "rnter elemets:" << endl;
+	int* masiv1 = new int[stl];
+	for (int i = 0; i < stl; i++)
+	{
+		cin >> masiv1[i];
+	}
+	perestanovka(arr, masiv1, str, stl);
+
+}
